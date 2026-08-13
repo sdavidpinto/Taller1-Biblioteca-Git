@@ -9,9 +9,9 @@ package com.mycompany.taller1.biblioteca.git;
  * @author Samue
  */
 public abstract class Person {
-    private String id;
-    private String name;
-    private String phoneNumber;
+    protected String id;
+    protected String name;
+    protected String phoneNumber;
 
     public Person(String id, String name, String phoneNumber) {
         this.id = id;

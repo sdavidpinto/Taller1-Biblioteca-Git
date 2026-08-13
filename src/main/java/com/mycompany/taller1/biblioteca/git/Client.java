@@ -21,6 +21,14 @@ public class Client extends Person{
     public String Show() {
         return "Id: "+id+"\n"+"Name:"+name+"Phone number: "+phoneNumber+"\n"+"Email Adress: "+email;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
     
     
     

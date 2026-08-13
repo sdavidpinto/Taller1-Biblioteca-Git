@@ -4,12 +4,13 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 
-public class main {
+public class Main {
     
     static ArrayList<Client> clients=new ArrayList<>();
-    static BufferedReader leer=new BufferedReader(new InputStreamReader(System.in));
     
     static void CreateClient(){
         
@@ -23,9 +24,20 @@ public class main {
         clients.add(new Client(id, name, phonenumber, email));
         
     }
+    static void ListClient(){
+        JTextArea salida=new JTextArea(30,40);
+        JScrollPane Tabla=new JScrollPane(salida);
+        salida.setText("ID\tName\tPhoneNumber\tEmail \n");
+        for (Client client : clients) {
+           salida.append(client.getId()+"\t"+client.getName()+"\t"+client.getPhoneNumber()+"\t"+client.getEmail()+"\t");
+        }
+        JOptionPane.showMessageDialog(null, Tabla);
+    }
+    
+    
+    
     
     public static void main(String[] args) {
-        
         
         
     }
