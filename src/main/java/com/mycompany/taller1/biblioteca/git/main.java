@@ -34,7 +34,20 @@ public class Main {
         JOptionPane.showMessageDialog(null, Tabla);
     }
     
-    
+    static void SearchClient(){
+        String idtoSearch = null;
+        
+        for (Client client : clients) {
+            if (client.getId().equals(idtoSearch)) {
+                JOptionPane.showMessageDialog(null,client.Show(),"Cliente encontrado",0);
+                break;
+            }
+            
+        }
+        
+        JOptionPane.showMessageDialog(null,"Id no existente","Aviso de busqueda",2);
+        
+    }
     
     
     public static void main(String[] args) {
