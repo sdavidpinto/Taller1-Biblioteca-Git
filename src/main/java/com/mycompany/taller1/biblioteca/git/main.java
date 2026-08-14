@@ -36,19 +36,46 @@ public class Main {
     
     static void SearchClient(){
         String idtoSearch = null;
+        boolean encontrado=false;
         
+        idtoSearch=JOptionPane.showInputDialog(null,"Please, Enter your ID","Search ID",1);
         for (Client client : clients) {
             if (client.getId().equals(idtoSearch)) {
+                
                 JOptionPane.showMessageDialog(null,client.Show(),"Cliente encontrado",0);
+                encontrado=true;
+                break;
+            }
+            
+        }
+        if (!encontrado) {
+            JOptionPane.showMessageDialog(null,"Id no existente","Aviso de busqueda",2);
+        }
+        
+    }
+    
+    static void DeleteClient(){
+        String idtoSearch = null;
+        boolean encontrado=false;
+        
+        idtoSearch=JOptionPane.showInputDialog(null,"Please, Enter your ID","Search ID",1);
+        for (Client client : clients) {
+            if (client.getId().equals(idtoSearch)) {
+                clients.remove(client);
+                
+                JOptionPane.showMessageDialog(null,"Cliente eliminado correctamente","Cliente eliminado",0);
+                encontrado=true;
                 break;
             }
             
         }
         
-        JOptionPane.showMessageDialog(null,"Id no existente","Aviso de busqueda",2);
+        if (!encontrado) {
+            JOptionPane.showMessageDialog(null,"Id no existente","Aviso de busqueda",2);
+        }
+
         
     }
-    
     
     public static void main(String[] args) {
         
