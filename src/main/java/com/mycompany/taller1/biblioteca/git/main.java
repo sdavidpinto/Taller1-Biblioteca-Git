@@ -11,6 +11,7 @@ import javax.swing.JTextArea;
 public class Main {
     
     static ArrayList<Client> clients=new ArrayList<>();
+    static ArrayList<Book> books=new ArrayList<>();
     
     static void CreateClient(){
         
@@ -74,6 +75,18 @@ public class Main {
             JOptionPane.showMessageDialog(null,"Id no existente","Aviso de busqueda",2);
         }
 
+        
+    }
+    static void CreateBook(){
+        
+        String code,name,year,author;
+        
+        code=JOptionPane.showInputDialog(null,"Please, Enter the Book´s code","ID section",1);
+        name=JOptionPane.showInputDialog(null,"Please, Enter Book´s title","Name section",1);
+        year=JOptionPane.showInputDialog(null,"Enter Book´s launch year ","launch year",1);
+        author=JOptionPane.showInputDialog(null,"Enter Book´s author","Author Section",1);
+       
+        books.add(new Book(code, name,year, author, true));
         
     }
     
