@@ -19,6 +19,30 @@ public abstract class Material {
         this.launch_year = launch_year;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getLaunch_year() {
+        return launch_year;
+    }
+
+    public void setLaunch_year(String launch_year) {
+        this.launch_year = launch_year;
+    }
+
     
     
     

@@ -19,7 +19,7 @@ public class Client extends Person{
 
     @Override
     public String Show() {
-        return "Id: "+id+"\n"+"Name:"+name+"Phone number: "+phoneNumber+"\n"+"Email Adress: "+email;
+        return "Id: "+id+"\n"+"Name:"+name+"\n"+"Phone number: "+phoneNumber+"\n"+"Email Adress: "+email;
     }
 
     public String getEmail() {
