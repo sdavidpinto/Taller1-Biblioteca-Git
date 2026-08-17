@@ -1,8 +1,5 @@
 package com.mycompany.taller1.biblioteca.git;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
