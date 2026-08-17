@@ -90,8 +90,19 @@ public class Main {
         
     }
     
+    static void ListBook(){
+        JTextArea salida=new JTextArea(30,40);
+        JScrollPane Tabla=new JScrollPane(salida);
+        salida.setText("ID\ttitle\tlaunch year\tauthor \n");
+        for (Book book : books) {
+           salida.append(book.getCode()+"\t"+book.getTitle()+"\t"+book.getLaunch_year()+"\t"+book.getAuthor()+"\t");
+        }
+        JOptionPane.showMessageDialog(null, Tabla);
+    }
+    
+    
    public static void main(String[] args) {
-        
-        
+        CreateBook();
+        ListBook();
     }
 }
