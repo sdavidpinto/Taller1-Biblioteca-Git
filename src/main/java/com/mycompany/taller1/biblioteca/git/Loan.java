@@ -17,7 +17,7 @@ public class Loan {
     private LocalDate loanDate;
     private String status;
 
-    public Loan(String idLoan, Client client, Book book, LocalDate loanDate, String status) {
+    public Loan(String idLoan, Client client, Book book,String status) {
         this.idLoan = idLoan;
         this.client = client;
         this.book = book;
@@ -64,15 +64,7 @@ public class Loan {
     public void setStatus(String status) {
         this.status = status;
     }
-
     
     
-    
-    
-    
-    
-    
-    
-    
-    
+   
 }

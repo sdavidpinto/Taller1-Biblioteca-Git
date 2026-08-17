@@ -2,6 +2,7 @@ package com.mycompany.taller1.biblioteca.git;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
@@ -12,6 +13,7 @@ public class Main {
     
     static ArrayList<Client> clients=new ArrayList<>();
     static ArrayList<Book> books=new ArrayList<>();
+    static ArrayList<Loan> loans = new ArrayList<>();
     
     static void CreateClient(){
         
@@ -37,19 +39,19 @@ public class Main {
     
     static void SearchClient(){
         String idtoSearch = null;
-        boolean encontrado=false;
+        boolean exist=false;
         
         idtoSearch=JOptionPane.showInputDialog(null,"Please, Enter your ID","Search ID",1);
         for (Client client : clients) {
             if (client.getId().equals(idtoSearch)) {
                 
                 JOptionPane.showMessageDialog(null,client.Show(),"Cliente encontrado",0);
-                encontrado=true;
+                exist=true;
                 break;
             }
             
         }
-        if (!encontrado) {
+        if (!exist) {
             JOptionPane.showMessageDialog(null,"Id no existente","Aviso de busqueda",2);
         }
         
@@ -57,12 +59,12 @@ public class Main {
     
     static void UpdateClient(){
         String idtoSeek="";
-        boolean encontrado=false;
+        boolean exist=false;
         
         idtoSeek=JOptionPane.showInputDialog(null,"Please, Enter your ID","Search ID",1);
         for (Client client : clients) {
             if (client.getId().equals(idtoSeek)) {
-                encontrado=true;
+                exist=true;
                 client.setName(JOptionPane.showInputDialog(null,"Please, Enter your new name","Name section",1));
                 client.setPhoneNumber(JOptionPane.showInputDialog(null,"Please, Enter your new phone number","phone number section",1));
                 client.setEmail(JOptionPane.showInputDialog(null,"Please, Enter your new email","email section",1));
@@ -71,7 +73,7 @@ public class Main {
             }
         }
         
-        if (!encontrado) {
+        if (!exist) {
             JOptionPane.showMessageDialog(null,"Id no existente","Aviso de busqueda",2);
         }
         
@@ -80,7 +82,7 @@ public class Main {
     
     static void DeleteClient(){
         String idtoSearch = null;
-        boolean encontrado=false;
+        boolean exist=false;
         
         idtoSearch=JOptionPane.showInputDialog(null,"Please, Enter your ID","Search ID",1);
         for (Client client : clients) {
@@ -88,13 +90,13 @@ public class Main {
                 clients.remove(client);
                 
                 JOptionPane.showMessageDialog(null,"Cliente eliminado correctamente","Cliente eliminado",0);
-                encontrado=true;
+                exist=true;
                 break;
             }
             
         }
         
-        if (!encontrado) {
+        if (!exist) {
             JOptionPane.showMessageDialog(null,"Id no existente","Aviso de busqueda",2);
         }
 
@@ -125,18 +127,18 @@ public class Main {
     
     static void SearchBook(){
         String idtoSearch = null;
-        boolean encontrado=false;
+        boolean exist=false;
         
         idtoSearch=JOptionPane.showInputDialog(null,"Please, Enter the book´s code","Search ID",1);
         for (Book book : books) {
             if (book.getCode().equals(idtoSearch)) {
-                encontrado=true;
+                exist=true;
                 JOptionPane.showMessageDialog(null,book.Show(),"libro encontrado",0);
                 break;
             }
         }
         
-        if (!encontrado) {
+        if (!exist) {
             JOptionPane.showMessageDialog(null,"Id no existente","Aviso de busqueda",2);
         }
     }
@@ -165,7 +167,7 @@ public class Main {
     
     static void DeleteBook(){
         String idtoSearch = null;
-        boolean encontrado=false;
+        boolean exist=false;
         
         idtoSearch=JOptionPane.showInputDialog(null,"Please, Enter the book code","Search ID",1);
         for (Book book: books) {
@@ -173,19 +175,59 @@ public class Main {
                 books.remove(book);
                 
                 JOptionPane.showMessageDialog(null,"libro eliminado correctamente","libro eliminado",0);
-                encontrado=true;
+                exist=true;
                 break;
             }
             
         }
         
-        if (!encontrado) {
+        if (!exist) {
             JOptionPane.showMessageDialog(null,"Id no existente","Aviso de busqueda",2);
         }
 
         
     }
     
+   static void CreateLoan(){
+       String idClient,idBook,idLoan;
+       boolean existClient=false;
+       boolean existBook=false;
+       
+       
+        idClient=JOptionPane.showInputDialog(null,"Please, Enter the client´s id","Client id",1);
+        for (Client client : clients) {
+            if (client.getId().equals(idClient)) {
+                
+                
+                
+                idBook=JOptionPane.showInputDialog(null,"Please, Enter the book´s code","Search ID",1);
+                for (Book book : books) {
+                    if (book.getCode().equals(idBook)) {
+                        
+                        idLoan=JOptionPane.showInputDialog(null,"Ingrese un ID para identificar el prestamo","Asignar id al prestamo", 0);
+                        
+                        book.setAvailable(false);
+                        loans.add(new Loan(idLoan, client, book,"Active"));
+                        existBook=true;
+                        break;
+                    }
+                }
+        
+                if (!existBook) {
+                    JOptionPane.showMessageDialog(null,"Id no existente","Aviso de busqueda",2);
+                }
+                
+                existClient=true;
+                break;
+            }
+            
+        }
+        if (!existClient) {
+            JOptionPane.showMessageDialog(null,"Id no existente","Aviso de busqueda",2);
+        }
+       
+       
+   } 
    public static void main(String[] args) {
         
     }
