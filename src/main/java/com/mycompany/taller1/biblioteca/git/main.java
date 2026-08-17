@@ -162,6 +162,30 @@ public class Main {
         }
         
     }
+    
+    static void DeleteBook(){
+        String idtoSearch = null;
+        boolean encontrado=false;
+        
+        idtoSearch=JOptionPane.showInputDialog(null,"Please, Enter the book code","Search ID",1);
+        for (Book book: books) {
+            if (book.getCode().equals(idtoSearch)) {
+                books.remove(book);
+                
+                JOptionPane.showMessageDialog(null,"libro eliminado correctamente","libro eliminado",0);
+                encontrado=true;
+                break;
+            }
+            
+        }
+        
+        if (!encontrado) {
+            JOptionPane.showMessageDialog(null,"Id no existente","Aviso de busqueda",2);
+        }
+
+        
+    }
+    
    public static void main(String[] args) {
         
     }
