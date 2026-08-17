@@ -224,10 +224,26 @@ public class Main {
         }
         if (!existClient) {
             JOptionPane.showMessageDialog(null,"Id no existente","Aviso de busqueda",2);
-        }
-       
-       
+        } 
    } 
+   
+   static void Devolution(){
+       
+       String idloan;
+       idloan=JOptionPane.showInputDialog(null,"Please, Enter code of loan","Loan id",1);
+       for (Loan loan : loans) {
+           if (loan.getIdLoan().equals(idloan)) {
+               loan.getBook().setAvailable(true);
+               loans.remove(loan);
+               JOptionPane.showMessageDialog(null,"Prestamo finalizado","Prestamo concluido",1);
+           }
+       }
+       
+       
+       
+       
+   }
+   
    public static void main(String[] args) {
         
     }
