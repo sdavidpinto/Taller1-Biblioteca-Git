@@ -11,6 +11,7 @@ import javax.swing.JTextArea;
 public class Main {
     
     static ArrayList<Client> clients=new ArrayList<>();
+    static ArrayList<Book> books=new ArrayList<>();
     
     static void CreateClient(){
         
@@ -54,6 +55,29 @@ public class Main {
         
     }
     
+    static void UpdateClient(){
+        String idtoSeek="";
+        boolean encontrado=false;
+        
+        idtoSeek=JOptionPane.showInputDialog(null,"Please, Enter your ID","Search ID",1);
+        for (Client client : clients) {
+            if (client.getId().equals(idtoSeek)) {
+                encontrado=true;
+                client.setName(JOptionPane.showInputDialog(null,"Please, Enter your new name","Name section",1));
+                client.setPhoneNumber(JOptionPane.showInputDialog(null,"Please, Enter your new phone number","phone number section",1));
+                client.setEmail(JOptionPane.showInputDialog(null,"Please, Enter your new email","email section",1));
+                JOptionPane.showMessageDialog(null,"Cambio realizado");
+                break;
+            }
+        }
+        
+        if (!encontrado) {
+            JOptionPane.showMessageDialog(null,"Id no existente","Aviso de busqueda",2);
+        }
+        
+    }
+    
+    
     static void DeleteClient(){
         String idtoSearch = null;
         boolean encontrado=false;
@@ -76,9 +100,93 @@ public class Main {
 
         
     }
-    
-    public static void main(String[] args) {
+    static void CreateBook(){
         
+        String code,name,year,author;
+        
+        code=JOptionPane.showInputDialog(null,"Please, Enter the Book´s code","ID section",1);
+        name=JOptionPane.showInputDialog(null,"Please, Enter Book´s title","Name section",1);
+        year=JOptionPane.showInputDialog(null,"Enter Book´s launch year ","launch year",1);
+        author=JOptionPane.showInputDialog(null,"Enter Book´s author","Author Section",1);
+       
+        books.add(new Book(code, name,year, author, true));
+        
+    }
+    
+    static void ListBook(){
+        JTextArea salida=new JTextArea(30,40);
+        JScrollPane Tabla=new JScrollPane(salida);
+        salida.setText("ID\ttitle\tlaunch year\tauthor \n");
+        for (Book book : books) {
+           salida.append(book.getCode()+"\t"+book.getTitle()+"\t"+book.getLaunch_year()+"\t"+book.getAuthor()+"\t");
+        }
+        JOptionPane.showMessageDialog(null, Tabla);
+    }
+    
+    static void SearchBook(){
+        String idtoSearch = null;
+        boolean encontrado=false;
+        
+        idtoSearch=JOptionPane.showInputDialog(null,"Please, Enter the book´s code","Search ID",1);
+        for (Book book : books) {
+            if (book.getCode().equals(idtoSearch)) {
+                encontrado=true;
+                JOptionPane.showMessageDialog(null,book.Show(),"libro encontrado",0);
+                break;
+            }
+        }
+        
+        if (!encontrado) {
+            JOptionPane.showMessageDialog(null,"Id no existente","Aviso de busqueda",2);
+        }
+    }
+    
+    static void UpdateBook(){
+        String idtoSeek="";
+        boolean encontrado=false;
+        
+        idtoSeek=JOptionPane.showInputDialog(null,"Please, Enter your Book´s ID","Search ID",1);
+        for (Book book: books) {
+            if (book.getCode().equals(idtoSeek)) {
+                encontrado=true;
+                book.setTitle(JOptionPane.showInputDialog(null,"Please, Enter the new title","Name section",1));
+                book.setAuthor(JOptionPane.showInputDialog(null,"Please, Enter the new author","author section",1));
+                book.setLaunch_year(JOptionPane.showInputDialog(null,"Please, Enter the new launch year","year section",1));
+                JOptionPane.showMessageDialog(null,"Cambio realizado");
+                break;
+            }
+        }
+        
+        if (!encontrado) {
+            JOptionPane.showMessageDialog(null,"Id no existente","Aviso de busqueda",2);
+        }
+        
+    }
+    
+    static void DeleteBook(){
+        String idtoSearch = null;
+        boolean encontrado=false;
+        
+        idtoSearch=JOptionPane.showInputDialog(null,"Please, Enter the book code","Search ID",1);
+        for (Book book: books) {
+            if (book.getCode().equals(idtoSearch)) {
+                books.remove(book);
+                
+                JOptionPane.showMessageDialog(null,"libro eliminado correctamente","libro eliminado",0);
+                encontrado=true;
+                break;
+            }
+            
+        }
+        
+        if (!encontrado) {
+            JOptionPane.showMessageDialog(null,"Id no existente","Aviso de busqueda",2);
+        }
+
+        
+    }
+    
+   public static void main(String[] args) {
         
     }
 }
