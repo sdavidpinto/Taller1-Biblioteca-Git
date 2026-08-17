@@ -100,9 +100,25 @@ public class Main {
         JOptionPane.showMessageDialog(null, Tabla);
     }
     
+    static void SearchBook(){
+        String idtoSearch = null;
+        boolean encontrado=false;
+        
+        idtoSearch=JOptionPane.showInputDialog(null,"Please, Enter the book´s code","Search ID",1);
+        for (Book book : books) {
+            if (book.getCode().equals(idtoSearch)) {
+                encontrado=true;
+                JOptionPane.showMessageDialog(null,book.Show(),"libro encontrado",0);
+                break;
+            }
+        }
+        
+        if (!encontrado) {
+            JOptionPane.showMessageDialog(null,"Id no existente","Aviso de busqueda",2);
+        }
+    }
     
    public static void main(String[] args) {
-        CreateBook();
-        ListBook();
+        
     }
 }
