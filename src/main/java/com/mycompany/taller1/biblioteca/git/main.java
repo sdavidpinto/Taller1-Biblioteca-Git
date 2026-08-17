@@ -238,11 +238,18 @@ public class Main {
                JOptionPane.showMessageDialog(null,"Prestamo finalizado","Prestamo concluido",1);
            }
        }
-       
-       
-       
-       
    }
+   
+  static void ListLoans(){
+       JTextArea salida=new JTextArea(30,40);
+        JScrollPane Tabla=new JScrollPane(salida);
+        salida.setText("id\tClient\tBook\tStatus\tDate\n");
+        for (Loan loan: loans) {
+           salida.append(loan.getIdLoan()+"\t"+loan.getClient().getName()+"\t"+loan.getBook().getTitle()+"\t"+loan.getStatus()+"\t"+loan.getLoanDate()+"\n");
+        }
+        JOptionPane.showMessageDialog(null, Tabla);
+  }
+   
    
    public static void main(String[] args) {
         
