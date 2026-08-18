@@ -11,8 +11,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 
-
-
 public class Main {
     
     static ArrayList<Client> clients=new ArrayList<>();
@@ -365,4 +363,6 @@ public class Main {
             }
         } while (opcionPrincipal != 3 && opcionPrincipal != -1);
         }
+   
 }
+
